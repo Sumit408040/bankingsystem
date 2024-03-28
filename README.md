@@ -1,13 +1,10 @@
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.Scanner;
 
-
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-
-class User {
+     class User {
     private String name;
     private String address;
     private String contactInfo;
@@ -41,9 +38,9 @@ class User {
     public String getAccountNumber() {
         return accountNumber;
     }
-}
+    }
 
-class Account {
+    class Account {
     private String accountNumber;
     private double balance;
     private List<String> transactionHistory;
@@ -73,9 +70,9 @@ class Account {
     public void updateBalance(double amount) {
         balance += amount;
     }
-}
+    }
 
-public class BankingSystemPrototype {
+    public class BankingSystemPrototype {
     private static Map<String, User> users = new HashMap<>();
     private static Map<String, Account> accounts = new HashMap<>();
     private static int accountCounter = 1000;
@@ -93,7 +90,7 @@ public class BankingSystemPrototype {
             System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -134,7 +131,7 @@ public class BankingSystemPrototype {
         String contactInfo = scanner.nextLine();
         System.out.print("Enter initial deposit amount: ");
         double initialDeposit = scanner.nextDouble();
-        scanner.nextLine(); // consume newline
+        scanner.nextLine(); 
 
         String accountNumber = "ACC" + accountCounter++;
         User user = new User(name, address, contactInfo, initialDeposit, accountNumber);
@@ -154,7 +151,7 @@ public class BankingSystemPrototype {
             System.out.println("Name: " + user.getName());
             System.out.println("Address: " + user.getAddress());
             System.out.println("Contact Information: " + user.getContactInfo());
-            // Allow updates if needed
+            
             System.out.println("Account settings updated successfully.");
         } else {
             System.out.println("Account not found.");
@@ -168,7 +165,7 @@ public class BankingSystemPrototype {
         if (accounts.containsKey(accountNumber)) {
             System.out.print("Enter deposit amount: ");
             double amount = scanner.nextDouble();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             Account account = accounts.get(accountNumber);
             account.updateBalance(amount);
@@ -186,7 +183,7 @@ public class BankingSystemPrototype {
         if (accounts.containsKey(accountNumber)) {
             System.out.print("Enter withdrawal amount: ");
             double amount = scanner.nextDouble();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             Account account = accounts.get(accountNumber);
             if (account.getBalance() >= amount) {
@@ -211,7 +208,7 @@ public class BankingSystemPrototype {
         if (accounts.containsKey(senderAccountNumber) && accounts.containsKey(recipientAccountNumber)) {
             System.out.print("Enter transfer amount: ");
             double amount = scanner.nextDouble();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine(); 
 
             Account senderAccount = accounts.get(senderAccountNumber);
             Account recipientAccount = accounts.get(recipientAccountNumber);
@@ -245,4 +242,4 @@ public class BankingSystemPrototype {
             System.out.println("Account not found.");
         }
     }
-}
+    }
